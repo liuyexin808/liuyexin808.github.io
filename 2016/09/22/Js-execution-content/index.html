@@ -110,16 +110,16 @@
 
 <meta name="description" content="执行上下文（Execution Context）它是ECMAScript规法中用来描述js代码执行的抽象概念。所有的js代码都是在某个执行上下文运行的.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScipt-执行上下文">
+<meta property="og:title" content="JavaScript-执行上下文">
 <meta property="og:url" content="http://yoursite.com/2016/09/22/Js-execution-content/index.html">
 <meta property="og:site_name" content="Lyxxx Blog">
 <meta property="og:description" content="执行上下文（Execution Context）它是ECMAScript规法中用来描述js代码执行的抽象概念。所有的js代码都是在某个执行上下文运行的.">
 <meta property="og:image" content="http://oduqqs2eo.bkt.clouddn.com/execution-context-stack.jpg">
 <meta property="og:image" content="http://oduqqs2eo.bkt.clouddn.com/20151023104856468.gif">
 <meta property="og:image" content="http://oduqqs2eo.bkt.clouddn.com/593627-20151025201155177-724394618.png">
-<meta property="og:updated_time" content="2016-09-21T18:03:50.351Z">
+<meta property="og:updated_time" content="2016-09-23T11:42:31.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScipt-执行上下文">
+<meta name="twitter:title" content="JavaScript-执行上下文">
 <meta name="twitter:description" content="执行上下文（Execution Context）它是ECMAScript规法中用来描述js代码执行的抽象概念。所有的js代码都是在某个执行上下文运行的.">
 <meta name="twitter:image" content="http://oduqqs2eo.bkt.clouddn.com/execution-context-stack.jpg">
 
@@ -144,7 +144,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/09/22/Js-execution-content/"/>
 
-  <title> JavaScipt-执行上下文 | Lyxxx Blog </title>
+  <title> JavaScript-执行上下文 | Lyxxx Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -274,7 +274,7 @@
             
             
               
-                JavaScipt-执行上下文
+                JavaScript-执行上下文
               
             
           </h1>
@@ -358,7 +358,7 @@
 <li>变量的声明(VariableDeclaration) - 变量的对象的一个属性;进入执行上下时,会创建相应的名称和值(undefined),如果变量的名称跟参数和函数声明相同的话,则不会影响他们.</li>
 </ul>
 <p>我们可以用EC对象来表示一个变量对象： VO = {};<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> c = <span class="number">20</span>;</div><div class="line">    &#125;</div><div class="line">b(<span class="number">30</span>);</div></pre></td></tr></table></figure></p>
-<p>相应的对象变量就可以理解成:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">VO(GobalContext) &#123;</div><div class="line">    a: <span class="number">10</span></div><div class="line">    b: <span class="function"><span class="keyword">function</span> <span class="title">object</span>;</span></div><div class="line">&#125;</div><div class="line"><span class="title">VO</span>(<span class="params">FunctionContext</span>) &#123;</div><div class="line">    i: <span class="number">30</span></div><div class="line">    c: <span class="number">20</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>相应的对象变量就可以理解成:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">VO(GlobalContext) &#123;</div><div class="line">    a: <span class="number">10</span></div><div class="line">    b: <span class="function"><span class="keyword">function</span> <span class="title">object</span>;</span></div><div class="line">&#125;</div><div class="line"><span class="title">VO</span>(<span class="params">FunctionContext</span>) &#123;</div><div class="line">    i: <span class="number">30</span></div><div class="line">    c: <span class="number">20</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>在具体实现方面(以及规范中)，变量对象只是一个抽象概念。</p>
 <h2 id="活动对象（Activation-object）"><a href="#活动对象（Activation-object）" class="headerlink" title="活动对象（Activation object）"></a>活动对象（Activation object）</h2><p> 只有全执行上下文的变量对象允许通过VO的属性名称间接访问；在函数执行上下文中，VO是不能直接访问的，此时由活动对象(AO)扮演VO的角色。</p>
 <p><img src="http://oduqqs2eo.bkt.clouddn.com/593627-20151025201155177-724394618.png" alt=""></p>
@@ -443,7 +443,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/09/22/Js-execution-content/"
-           data-title="JavaScipt-执行上下文" data-url="http://yoursite.com/2016/09/22/Js-execution-content/">
+           data-title="JavaScript-执行上下文" data-url="http://yoursite.com/2016/09/22/Js-execution-content/">
       </div>
     
   </div>
