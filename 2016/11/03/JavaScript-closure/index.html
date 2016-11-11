@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JS," />
 
 
 
@@ -108,16 +108,16 @@
 
 
 
-<meta name="description" content="作为一个小透明，如果不写点东西，以后就要消失了啊。所以在这blog里写下我所学的东西，用来记录和巩固。如果有什么写错的地方，望评论指出，这样能够发现自己的错误，得以改正。">
+<meta name="description" content="闭包(closure)当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hey!Hey!Hey!">
-<meta property="og:url" content="http://yoursite.com/2016/09/20/Hello-World/index.html">
+<meta property="og:title" content="JavaScript-闭包">
+<meta property="og:url" content="http://yoursite.com/2016/11/03/JavaScript-closure/index.html">
 <meta property="og:site_name" content="Lyxxx Blog">
-<meta property="og:description" content="作为一个小透明，如果不写点东西，以后就要消失了啊。所以在这blog里写下我所学的东西，用来记录和巩固。如果有什么写错的地方，望评论指出，这样能够发现自己的错误，得以改正。">
-<meta property="og:updated_time" content="2016-09-21T18:00:38.351Z">
+<meta property="og:description" content="闭包(closure)当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。">
+<meta property="og:updated_time" content="2016-11-11T11:44:02.984Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hey!Hey!Hey!">
-<meta name="twitter:description" content="作为一个小透明，如果不写点东西，以后就要消失了啊。所以在这blog里写下我所学的东西，用来记录和巩固。如果有什么写错的地方，望评论指出，这样能够发现自己的错误，得以改正。">
+<meta name="twitter:title" content="JavaScript-闭包">
+<meta name="twitter:description" content="闭包(closure)当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。">
 
 
 
@@ -138,9 +138,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/20/Hello-World/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/03/JavaScript-closure/"/>
 
-  <title> Hey!Hey!Hey! | Lyxxx Blog </title>
+  <title> JavaScript-闭包 | Lyxxx Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -270,7 +270,7 @@
             
             
               
-                Hey!Hey!Hey!
+                JavaScript-闭包
               
             
           </h1>
@@ -282,13 +282,41 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T00:00:45+08:00" content="2016-09-20">
-              2016-09-20
+            <time itemprop="dateCreated" datetime="2016-11-03T20:50:39+08:00" content="2016-11-03">
+              2016-11-03
             </time>
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/原生js/" itemprop="url" rel="index">
+                    <span itemprop="name">原生js</span>
+                  </a>
+                </span>
 
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/03/JavaScript-closure/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/03/JavaScript-closure/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -308,7 +336,11 @@
       
 
       
-        <p>作为一个小透明，如果不写点东西，以后就要消失了啊。所以在这blog里写下我所学的东西，用来记录和巩固。<br>如果有什么写错的地方，望评论指出，这样能够发现自己的错误，得以改正。</p>
+        <h2 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包(closure)"></a>闭包(closure)</h2><p>当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">        <span class="built_in">console</span>.log(b);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> bn</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fun = fn();</div><div class="line">fun(); <span class="comment">// 2</span></div></pre></td></tr></table></figure></p>
+<p>这就是闭包，bn的作用域可以直接访问fn的内部作用域,然后将bn当返回值进行传递，最后将fn()执行后的值赋值给fun,也就是将bn赋值给了fun.最后fun()进行调用得到2<br>通常fn()函数执行后就会销毁整个内部的作用域,引擎会进行垃圾回收来解放内存空间，而闭包就可以阻止这件事的发生，fn()函数的内部作用域还存在，因为bn()函数还在使用.</p>
+<p>##闭包的循环<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">btn = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"button"</span>)</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = btn.length; i &lt; len; i++) &#123;</div><div class="line">    btn[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>假设有5个按钮，目的为每个按钮绑定事件,理想的结果是i依次为0,1,2,3,4.但结果是5,5,5,5,5.因为事件函数是在循环执行完成后，点击时才被调用的,然后从内部查找i并没有，按照作用域链向外查找i,找到了i = 5,这时候就可以用闭包解决<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">btn = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"button"</span>)</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = btn.length; i &lt; len; i++) &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">        btn[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(i);</div><div class="line">        &#125;</div><div class="line">    &#125;)(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用立即执行函数每次循环都会创建新的作用域，每次都会把i的值传递进去，这样当事件函数调用的时候，按照作用域链查找到的i就是正确的值了</p>
 
       
     </div>
@@ -329,18 +361,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag">#JS</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/10/12/JavaScript-this/" rel="next" title="JavaScript-this">
+                <i class="fa fa-chevron-left"></i> JavaScript-this
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/22/Js-execution-content/" rel="prev" title="JavaScript-执行上下文">
-                JavaScript-执行上下文 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -364,6 +402,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/03/JavaScript-closure/"
+           data-title="JavaScript-闭包" data-url="http://yoursite.com/2016/11/03/JavaScript-closure/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -470,7 +516,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包-closure"><span class="nav-number">1.</span> <span class="nav-text">闭包(closure)</span></a></li></ol></div>
             
           </div>
         </section>
