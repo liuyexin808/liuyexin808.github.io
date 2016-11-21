@@ -114,7 +114,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/03/JavaScript-closure/index.html">
 <meta property="og:site_name" content="Lyxxx Blog">
 <meta property="og:description" content="闭包(closure)当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。">
-<meta property="og:updated_time" content="2016-11-11T11:44:02.984Z">
+<meta property="og:updated_time" content="2016-11-21T15:52:27.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript-闭包">
 <meta name="twitter:description" content="闭包(closure)当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。">
@@ -338,7 +338,7 @@
       
         <h2 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包(closure)"></a>闭包(closure)</h2><p>当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">        <span class="built_in">console</span>.log(b);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> bn</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fun = fn();</div><div class="line">fun(); <span class="comment">// 2</span></div></pre></td></tr></table></figure></p>
 <p>这就是闭包，bn的作用域可以直接访问fn的内部作用域,然后将bn当返回值进行传递，最后将fn()执行后的值赋值给fun,也就是将bn赋值给了fun.最后fun()进行调用得到2<br>通常fn()函数执行后就会销毁整个内部的作用域,引擎会进行垃圾回收来解放内存空间，而闭包就可以阻止这件事的发生，fn()函数的内部作用域还存在，因为bn()函数还在使用.</p>
-<p>##闭包的循环<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">btn = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"button"</span>)</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = btn.length; i &lt; len; i++) &#123;</div><div class="line">    btn[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="闭包的循环"><a href="#闭包的循环" class="headerlink" title="闭包的循环"></a>闭包的循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">btn = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"button"</span>)</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = btn.length; i &lt; len; i++) &#123;</div><div class="line">    btn[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>假设有5个按钮，目的为每个按钮绑定事件,理想的结果是i依次为0,1,2,3,4.但结果是5,5,5,5,5.因为事件函数是在循环执行完成后，点击时才被调用的,然后从内部查找i并没有，按照作用域链向外查找i,找到了i = 5,这时候就可以用闭包解决<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">btn = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"button"</span>)</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = btn.length; i &lt; len; i++) &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">        btn[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(i);</div><div class="line">        &#125;</div><div class="line">    &#125;)(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>使用立即执行函数每次循环都会创建新的作用域，每次都会把i的值传递进去，这样当事件函数调用的时候，按照作用域链查找到的i就是正确的值了</p>
 
@@ -380,8 +380,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/21/arcite/" rel="prev" title="arcite">
-                arcite <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/20/JavaScript实践练习(一)/" rel="prev" title="JavaScript实践练习(一)">
+                JavaScript实践练习(一) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -471,7 +471,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -520,7 +520,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包-closure"><span class="nav-number">1.</span> <span class="nav-text">闭包(closure)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包-closure"><span class="nav-number">1.</span> <span class="nav-text">闭包(closure)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的循环"><span class="nav-number">2.</span> <span class="nav-text">闭包的循环</span></a></li></ol></div>
             
           </div>
         </section>
