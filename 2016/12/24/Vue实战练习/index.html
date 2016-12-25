@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JS," />
+  <meta name="keywords" content="practice," />
 
 
 
@@ -108,16 +108,18 @@
 
 
 
-<meta name="description" content="闭包(closure)当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。">
+<meta name="description" content="Vue学习也有一段时间了,想实战一下，就去找了个移动外卖APP的案列，视频是vue1.0,自己就用2.0练习了一下,收获还是蛮多的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript-闭包">
-<meta property="og:url" content="http://yoursite.com/2016/11/03/JavaScript-closure/index.html">
+<meta property="og:title" content="Vue实战练习">
+<meta property="og:url" content="http://yoursite.com/2016/12/24/Vue实战练习/index.html">
 <meta property="og:site_name" content="Lyxxx Blog">
-<meta property="og:description" content="闭包(closure)当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。">
-<meta property="og:updated_time" content="2016-11-21T15:52:27.357Z">
+<meta property="og:description" content="Vue学习也有一段时间了,想实战一下，就去找了个移动外卖APP的案列，视频是vue1.0,自己就用2.0练习了一下,收获还是蛮多的">
+<meta property="og:image" content="http://oigx4lov6.bkt.clouddn.com/pic.png">
+<meta property="og:updated_time" content="2016-12-25T17:23:32.393Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript-闭包">
-<meta name="twitter:description" content="闭包(closure)当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。">
+<meta name="twitter:title" content="Vue实战练习">
+<meta name="twitter:description" content="Vue学习也有一段时间了,想实战一下，就去找了个移动外卖APP的案列，视频是vue1.0,自己就用2.0练习了一下,收获还是蛮多的">
+<meta name="twitter:image" content="http://oigx4lov6.bkt.clouddn.com/pic.png">
 
 
 
@@ -138,9 +140,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/03/JavaScript-closure/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/24/Vue实战练习/"/>
 
-  <title> JavaScript-闭包 | Lyxxx Blog </title>
+  <title> Vue实战练习 | Lyxxx Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -270,7 +272,7 @@
             
             
               
-                JavaScript-闭包
+                Vue实战练习
               
             
           </h1>
@@ -282,8 +284,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-11-03T20:50:39+08:00" content="2016-11-03">
-              2016-11-03
+            <time itemprop="dateCreated" datetime="2016-12-24T20:50:39+08:00" content="2016-12-24">
+              2016-12-24
             </time>
           </span>
 
@@ -296,8 +298,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/原生js/" itemprop="url" rel="index">
-                    <span itemprop="name">原生js</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -312,8 +314,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/03/JavaScript-closure/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/03/JavaScript-closure/" itemprop="commentsCount"></span>
+                <a href="/2016/12/24/Vue实战练习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/24/Vue实战练习/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -336,11 +338,17 @@
       
 
       
-        <h2 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包(closure)"></a>闭包(closure)</h2><p>当函数可以记住并访问所在的词法作用域，即便函数是在当前词法作用域之外执行的，就产生了闭包，通俗说就是可以在函数作用域之外的地方直接访问到该函数作用域里的变量。<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">        <span class="built_in">console</span>.log(b);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> bn</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fun = fn();</div><div class="line">fun(); <span class="comment">// 2</span></div></pre></td></tr></table></figure></p>
-<p>这就是闭包，bn的作用域可以直接访问fn的内部作用域,然后将bn当返回值进行传递，最后将fn()执行后的值赋值给fun,也就是将bn赋值给了fun.最后fun()进行调用得到2<br>通常fn()函数执行后就会销毁整个内部的作用域,引擎会进行垃圾回收来解放内存空间，而闭包就可以阻止这件事的发生，fn()函数的内部作用域还存在，因为bn()函数还在使用.</p>
-<h2 id="闭包的循环"><a href="#闭包的循环" class="headerlink" title="闭包的循环"></a>闭包的循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">btn = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"button"</span>)</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = btn.length; i &lt; len; i++) &#123;</div><div class="line">    btn[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>假设有5个按钮，目的为每个按钮绑定事件,理想的结果是i依次为0,1,2,3,4.但结果是5,5,5,5,5.因为事件函数是在循环执行完成后，点击时才被调用的,然后从内部查找i并没有，按照作用域链向外查找i,找到了i = 5,这时候就可以用闭包解决<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">btn = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"button"</span>)</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = btn.length; i &lt; len; i++) &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">        btn[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(i);</div><div class="line">        &#125;</div><div class="line">    &#125;)(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>使用立即执行函数每次循环都会创建新的作用域，每次都会把i的值传递进去，这样当事件函数调用的时候，按照作用域链查找到的i就是正确的值了</p>
+        <p>Vue学习也有一段时间了,想实战一下，就去找了个移动外卖APP的案列，视频是vue1.0,自己就用2.0练习了一下,收获还是蛮多的<br><a id="more"></a><br>1 如果一个父组件某一区块拥有许多状态，父组件就可以prop数据交给子组件去做处理，子组件处理完成之后，只需要派发事件把参数传回给父组件,然后父组件在子组件上监听事件,就能拿到处理后的数据。子组件也能够在其他组件中复用,它所做的就是处理数据</p>
+<p><img src="http://oigx4lov6.bkt.clouddn.com/pic.png" alt=""></p>
+<p>比如这个就是两个数据selectType和onlyContent, selectType拥有三种状态 all,positive和negative, onlyContent拥有两种状态 true和false,就可以交给子组件处理，然后传回给父组件,直接过滤出需要渲染的列表就可以了</p>
+<p>2  初始化滚动插件时<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scroll = <span class="keyword">new</span> Scroll(el, &#123;&#125;)</div></pre></td></tr></table></figure></p>
+<p>这样就会失败滚动不了，因为数据是异步请求获得的,还没加载完成,就初始化了滚动插件,就会计算出高度不对,<br>所以涉及DOM的就可以使用nextTick(),异步更新DOM，等数据变化之后在初始化插件就可以了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.$nextTick(() =&gt; &#123;</div><div class="line">    <span class="keyword">var</span> scroll = <span class="keyword">new</span> Scroll(el, &#123;&#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>3 兄弟组件之间的通信,比如A和B,一种方式是由它们的父组件C充当中转站.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 父组件C</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div&gt;</div><div class="line">    &lt;A @getValue=&quot;getValue&quot;&gt;&lt;/A&gt;  //获取A组件派发事件的参数</div><div class="line">    &lt;B :value=&quot;value&quot;&gt;&lt;/B&gt;       //把参数prop给B组件</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  data() &#123;</div><div class="line">    return &#123;</div><div class="line">      value: &apos;&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    getValue(target) &#123;</div><div class="line">      this.value = target</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>另一种方式就是更全局型的，创建一个bus.js,然后在需要使用的组件中import就可以了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">let</span> bus = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    data:...</div><div class="line">    methods:...</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> bus</div></pre></td></tr></table></figure></p>
+<p>这些都是简单的通信，复杂就需要用到vuex了</p>
+<p>4 vue-router配置,这个app用到的还是蛮简单的，只需要配置三个路径，一开始是写在main.js，但是感觉太乱了，感觉还是应该单独创建一个router文件夹<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">'vue-router'</span></div><div class="line"><span class="keyword">import</span> Goods <span class="keyword">from</span> <span class="string">'components/goods/goods'</span></div><div class="line"><span class="keyword">import</span> Ratings <span class="keyword">from</span> <span class="string">'components/ratings/ratings'</span></div><div class="line"><span class="keyword">import</span> Seller <span class="keyword">from</span> <span class="string">'components/seller/seller'</span></div><div class="line">Vue.use(VueRouter)</div><div class="line"></div><div class="line"><span class="keyword">const</span> routes = [</div><div class="line">  &#123;</div><div class="line">    path: <span class="string">'/goods'</span>,</div><div class="line">    component: Goods</div><div class="line">  &#125;, &#123;</div><div class="line">    path: <span class="string">'/seller'</span>,</div><div class="line">    component: Seller</div><div class="line">  &#125;, &#123;</div><div class="line">    path: <span class="string">'/ratings'</span>,</div><div class="line">    component: Ratings</div><div class="line">  &#125;</div><div class="line">]</div><div class="line"></div><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">  routes,</div><div class="line">  linkActiveClass: <span class="string">'active'</span>,</div><div class="line">  mode: <span class="string">'history'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</div></pre></td></tr></table></figure></p>
+<p>5.整体做下来不算太难，但该涉及到的都有用到，感觉组件生命周期还是非常重要的，再配合其他的库使用的时候，该在什么时候初始化或调用等等，完全了解了生命周期才不容易踩太大的坑，还用了Css预处理器stylus,写起来还是非常爽的;{}:都不要写了,但可读性和维护性就有点差了，但总体来说还是不错的.</p>
+<p>6.哦，还有用了Es-Lint发现自己写的代码格式真的是**，一开始一段代码写好之后一大篇红字，爽歪歪，用了久之后发现对于规范书写代码还是很有效果的</p>
 
       
     </div>
@@ -363,7 +371,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JS/" rel="tag">#JS</a>
+            <a href="/tags/practice/" rel="tag">#practice</a>
           
         </div>
       
@@ -372,17 +380,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/12/JavaScript-this/" rel="next" title="JavaScript-this">
-                <i class="fa fa-chevron-left"></i> JavaScript-this
+              <a href="/2016/11/20/JavaScript实践练习(一)/" rel="next" title="JavaScript实践练习(一)">
+                <i class="fa fa-chevron-left"></i> JavaScript实践练习(一)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/20/JavaScript实践练习(一)/" rel="prev" title="JavaScript实践练习(一)">
-                JavaScript实践练习(一) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -408,8 +412,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/03/JavaScript-closure/"
-           data-title="JavaScript-闭包" data-url="http://yoursite.com/2016/11/03/JavaScript-closure/">
+      <div class="ds-thread" data-thread-key="2016/12/24/Vue实战练习/"
+           data-title="Vue实战练习" data-url="http://yoursite.com/2016/12/24/Vue实战练习/">
       </div>
     
   </div>
@@ -520,7 +524,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包-closure"><span class="nav-number">1.</span> <span class="nav-text">闭包(closure)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的循环"><span class="nav-number">2.</span> <span class="nav-text">闭包的循环</span></a></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
             
           </div>
         </section>
